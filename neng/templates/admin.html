@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}登录{% endblock title %}
+
+{% block content %}
+
+<p id="qw" class="e">标题</p><input id ="title" type="text" >
+<p>内容</p>
+<textarea id="editor_id" name="content" style="width:700px;height:300px;">
+&lt;strong&gt;内容&lt;/strong&gt;
+</textarea>
+<button id="submit">提交</button>
+<script charset="utf-8" src="/static/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="/static/kindeditor/lang/zh_CN.js"></script>
+<script>
+
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id',
+                {allowPreviewEmoticons : false,
+                resizeType : 1,
+                allowImageRemote : false,
+                uploadJson : '/up/',
+                                    items : [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+                })
+        });
+        $("#submit").click(function(){
+        editor.sync()
+        var title= $("#title").val()
+        <!--var html=document.getElementById("editor_id").value-->
+        var con=$("#editor_id").val()
+        date={
+  "title":title,
+    "con":con
+     }
+        $.ajax({
+                type:'POST',
+                data:date,
+                url:'/tijiao/',
+                 dataType:'json',
+               success:function(res){
+               alert (res.message)
+               }
+
+        })
+         })
+
+</script>
+{% endblock content %}
+

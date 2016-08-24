@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}首页{% endblock title %}
+    {% block css %}
+         <style>
+			 body{
+			 text_align:center}
+			 #top
+			 {
+			 width:100%
+			 heigth:50px
+			 margin:0 auto
+			 }
+			 #top_menu
+			 {
+			 width:70%
+			 heigth:50px
+			 text_align:center
+			 margin:0 auto
+			 }
+		 </style>
+
+
+    {% endblock css %}
+{% block content %}
+
+<div class='top'>
+	<a href="">接口</a>
+	<a href="">自动化</a>
+	<a href="">资料</a>
+
+
+</div>
+<div>
+	<div class='top_menu'>
+		<a href="" >添加</a>
+		<input type="text">搜索
+	</div>
+	<div >
+{}
+	</div>
+</div>
+{% endblock content %}

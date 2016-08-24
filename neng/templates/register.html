@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}注册{% endblock title %}
+
+{% block content %}
+<div>
+用户<input id="user" type="text"  placeholder="请输入账号">
+    </div>
+<div>
+密码<input id="pass" type="text"  placeholder="密码">
+        </div>
+<button >注册</button>
+<script >
+ $(function(){
+    $("button").click(function() {
+       var user=$("#user").val()
+       var pass=$("#pass").val()
+        data={'user':user,'pass':pass}
+        $.ajax({
+            type:'POST',
+            url:'/index/mobileregister/',
+            data:{"user":user,"pass":pass},
+            dataType:'json',
+            success:function(res){
+            alert(res.message)
+            if (res.code==1){
+            location.href="/index/test/";}
+              else{location.href="/index/register/";}
+
+             },
+            })
+    })
+
+    })
+</script>
+{% endblock content %}

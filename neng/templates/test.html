@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}首页{% endblock title %}
+    {% block css %}
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <link href="/static/1.css"  rel="stylesheet" />
+<style type="text/css">
+#main_left{
+width:70%;
+float:left;
+}
+#content{
+	width:100%;
+	<!--height:250px;-->
+	height:200px;
+	border:1px solid #00f;
+	}
+#article_title{
+	width:100%;
+	padding:15px;
+	border:1px solid #00f;
+	}
+#article_content{
+	width:100%;
+	padding:15px;
+	border:1px solid #00f;
+	}
+#article_time{
+	width:100%;
+	padding:15px;
+		border:1px solid #00f;
+	}
+	#clear{
+
+	height:50px;}
+      </style>
+
+    {% endblock css %}
+
+{% block content %}
+
+
+
+<div id="main_left">
+	{% for s in uf%}
+	<div id="content">
+		<div id="article_title">{{s.title}}</div>
+		<div id="article_content">{{s.content|safe}}</div>
+		<div id="article_time">{{s.create_time}}</div>
+	</div>
+	<div id ="clear">  </div>
+	{% endfor %}
+</div>
+<div id="main_right">
+
+	<div id="message">
+		公告
+
+	</div>
+</div>
+
+{% endblock content %}
+
+<!--<div class="container">-->
+	<!--<div class="row clearfix">-->
+		<!--<div class="col-md-12 column">-->
+			<!--<ul class="pagination">-->
+				<!--<li><a href="#">首页</a>-->
+					<!--</li >-->
+				<!--{% for s in allpage%}-->
+				<!--<li>-->
+					 <!--<a href="/test/page={{s}}">{{s}}</a>-->
+				<!--</li>-->
+
+				<!--{% endfor %}-->
+				<!--<li><a href="#">未页</a>-->
+					<!--</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+
+
+

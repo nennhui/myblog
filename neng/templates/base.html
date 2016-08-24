@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}欢迎光临{% endblock title %} </title>
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <link href="/static/1.css"  rel="stylesheet" />
+    {% block css %}
+         
+    {% endblock css %}
+ 
+    {% block js %}
+         
+    {% endblock js %}
+  </head>
+  <body>
+  <div id="top_nav">
+    <div id="top-nav-inner">
+        <div  id="logo">
+            <a href="/">
+                <b>Test-Test
+                </b></a>
+        </div>
+
+
+        <div id="nav_user_1">
+            <a href="/index/login/">
+                登录
+            </a>
+            <a href="/index/register/">
+                注册
+            </a>
+        </div>
+        <div id="nav_user_2" >
+            <a href="/index/login/">
+                账号
+            </a>
+            <a href="/admin/">
+                发博客
+            </a>
+            <a onclick="loginout()" href="#">
+                退出
+            </a>
+        </div>
+
+        <div id="nav_menu">
+            <ul>
+                <li>
+                    <a href="#">用例
+                    </a>
+                </li>
+                <li>
+                    <a href="#">ui自动化
+                    </a>
+                </li>
+                <li>
+                    <a href="#">接口
+                    </a>
+                </li>
+                <li>
+                    <a href="/index/test/">代码
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+  <div id="main">
+{% block content %}
+
+{% endblock content %}
+  </div>
+<script>
+$("#nav_user_2").hide()
+if ({{ww}}==2){
+$("#nav_user_1").hide()
+$("#nav_user_2").show()
+}
+else{
+$("#nav_user_2").hide()
+$("#nav_user_1").show()
+}
+
+
+function  loginout(){
+$.ajax({
+            type:'get',
+            url:'/index/loginout/',
+            success:function(res){;
+
+            alert(res.message)
+            location.href="";}
+            })
+}
+</script>
+  <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

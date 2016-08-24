@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>首页</title>
+    <link href="/static/2.css"  rel="stylesheet" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+</head>
+<body>
+	{% csrf_token %}
+<div>
+试试<input id="pu"type="text">  <p id="yy">123</p>
+    </div>
+<script >
+ $(function(){
+    $("#pu").bind('input propertychange', function() {
+       var x=$("#pu").val()
+        data={'con':x}
+        $.ajax({
+            type:'post',
+            url:'/index/',
+            date:data,
+            dataType:'json',
+            success:function(res){
+        $('#yy').text(res.content[1].title)
+             }
+            })
+    })
+
+    })
+
+</script>
+</body>
+</html>
